@@ -61,7 +61,7 @@ class CityManager:
         p.hunger -= 1
 
     else:
-      self.log.append([2,'The citiczens eat {} food'.format(sum_food)])
+      self.log.append([2,'The citizens eat {} food'.format(sum_food)])
 
       for p in self.pop.people:
         if p.hunger < 11: p.hunger += 1
@@ -78,7 +78,7 @@ class CityManager:
       self.wood = 0
       self.log.append([2,'Wood stocks are empty! Bad times are ahead'])
     else:
-      self.log.append([2,'The citiczens burn {} wood to cook'.format(sum_burned_cook)])
-      self.log.append([2,'The citiczens burn {} wood to stay warm'.format(sum_burned_warmth)])
+      self.log.append([2,'The citizens burn {} wood to cook'.format(sum_burned_cook)])
+      self.log.append([2,'The citizens burn {} wood to stay warm'.format(sum_burned_warmth)])
 
       
