@@ -29,22 +29,20 @@ class Relations:
   def add_relationship(self, person, rel_value=2.0, rel_text=''):
     self.rel.append([person, rel_value, rel_text])
 
-  def del_relationship(self, person):
+  def del_relationship(self, tgt_person):
 
     '''
     When a villager dies remove the relationship.
     Return strength of relationship and relationship
     text to create a mood event.
     '''
-    count = 0
-    while count < len(self.rel):
-
-      if self.rel[count][0] == person:
-        dead_rel_value = self.rel[count][1]
-        del self.rel[count]
-        return dead_rel_value
-
-      count += 1
+    dead_rel_value = 0
+    for person in self.rel:
+      if person[0] == tgt_person:
+        dead_rel_value = person[1]
+        break
+    
+    return dead_rel_value
 
 
   def mod_relationship(self, value, person):
@@ -74,7 +72,7 @@ class Relations:
 
           new_rel_text = "{} is now {} with {}. ({})".format(self.my_name, rel_text, people[0].name, '%.3f'%(fin_rel_value))
 
-          self.log.append([4, new_rel_text])
+          self.log.append([4, new_rel_text, ''])
 
 
   def get_relationship(self, person):
@@ -84,7 +82,7 @@ class Relations:
         return people[1]
 
     # Person must not exist so add
-    self.rel.append((person,2.0))
+    self.rel.append([person, 2.0])
 
 
   def get_rel_text(self, rel_value):

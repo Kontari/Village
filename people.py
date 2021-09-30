@@ -2,7 +2,7 @@ import random as r
 import logging
 import namegen
 import emotions
-import math as m 
+import math as m
 import personality
 import configGlobals
 import relationships
@@ -95,9 +95,9 @@ class PeopleManager:
       self.people.append(Person(age=r.randint(1,60)))
 
       # Init persons relationships
-      self.people[-1].relationships.init_relationships(self.people)  
+      self.people[-1].relationships.init_relationships(self.people)
 
-      # Update everyone but the persons relationship 
+      # Update everyone but the persons relationship
       # objects to include the new person
       for p in self.people[:-1]:
         p.relationships.add_relationship(self.people[-1])
@@ -107,13 +107,13 @@ class PeopleManager:
     # Adding a child
     if r.randint(1,25) == 1:
 
-      # Create a new person object      
+      # Create a new person object
       self.people.append(Person(age=1))
 
       # Init childs relationships
-      self.people[-1].relationships.init_relationships(self.people)  
+      self.people[-1].relationships.init_relationships(self.people)
 
-      # Update everyone but the childs relationship 
+      # Update everyone but the childs relationship
       # objects to include the new child
       for p in self.people[:-1]:
         p.relationships.add_relationship(self.people[-1])
@@ -235,7 +235,7 @@ class Person:
     self.log.append([2,self.pers.get_backstory()])
 
 
-  def tick(self): 
+  def tick(self):
 
     self.log += self.relationships.tick()
 
@@ -273,13 +273,13 @@ class Person:
 
       # Looking for a partner
       pass
-      
+
   def set_spouse(self, person):
     self.spouse = person
 
 
-  def show_stats(self):  
-    
+  def show_stats(self):
+
     symb = '\u001b[34m♂\u001b[0m'
     if self.gender == 'Female':
       symb = '\u001b[35;1m♀\u001b[0m'

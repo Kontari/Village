@@ -26,7 +26,7 @@ class SocialEvents:
     prct_tick = configGlobals.SOCIAL_CHANCE
     loops = m.floor(prct_tick * len(self.people.people))
 
-    for i in range(1,loops):
+    for _ in range(1,loops):
       self.random_event()
 
     cp_log = self.log
@@ -51,7 +51,10 @@ class SocialEvents:
     # Now we have two people to trigger an event with
     sel_p_rel = selected_person.relationships.get_relationship(another_person)
     ano_p_rel = another_person.relationships.get_relationship(selected_person)
-    sum_relationship = sel_p_rel + ano_p_rel
+    if (sel_p_rel and ano_p_rel):
+      sum_relationship = sel_p_rel + ano_p_rel
+    else:
+      return
 
     # See if their relationship is bad, neutral, or good
     if sum_relationship < 1: # Dsliked
