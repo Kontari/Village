@@ -6,14 +6,14 @@ from the history generation system Dwarf Fortress.
 
 # Running the sim
 ```bash
-python main.py
+python3 main.py
 ```
 
 ![Demo](village_demo.gif)
 
 
 After running press any key to simulate a day. Events will
-happen at random, from villagers meeting and talking to 
+happen at random, from villagers meeting and talking to
 bar brawls.
 
 # Modifying the world

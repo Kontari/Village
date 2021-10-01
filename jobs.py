@@ -118,6 +118,10 @@ class JobManager:
     if (len(self.hunters) / pop) < self.job_ratios['Hunter']:
       needed_jobs.append('Hunter')
 
+    if (not needed_jobs):
+      # Give default job
+      #TODO: Better fix for no needed jobs being selected
+      needed_jobs.append('Farmer')
 
     # Assign workers to jobs that aren't as filled
     for worker in self.unemployed:
@@ -248,7 +252,7 @@ class JobManager:
 
       else:
 
-        self.logs.append([4,'{} hunts and catches nothing.'.format(n.name, final) ])
+        self.logs.append([4,'{} hunts and catches nothing.'.format(n.name) ])
 
   def tick_unemployed(self):
     pass
