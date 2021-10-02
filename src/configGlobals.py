@@ -1,5 +1,5 @@
-VERSION=1.0
-VERBOSE=True
+VERSION = 1.1
+VERBOSE = True
 
 # Tier 0 -- World events
 # Tier 1 -- Character information
@@ -7,12 +7,12 @@ VERBOSE=True
 # Tier 3 -- Details
 # Tier 4 -- Math details
 # Tier 5 -- Everything
-LOGGING_VERBOSITY=4
+LOGGING_VERBOSITY = 4
 
 # How many villagers to start with,
 # cannot select less than 8
 # Default: 10
-STARTING_POP=4
+STARTING_POP = 4
 
 # FRIENDLY_CHANCE
 # Controls how likely neutral villagers will respond
@@ -21,7 +21,7 @@ STARTING_POP=4
 # Range: 0.0 - 1.0
 FRIENDLY_CHANCE = 0.6
 
-# How often settlers will arrive 
+# How often settlers will arrive
 # at your village per year
 # Default = 12
 SETTLER_CHANCE = 12
@@ -39,7 +39,7 @@ AVG_HAPPY = 0.7
 # Warning: Setting this above 1 might cause performance
 # issues.
 # Default: 0.6
-# Accepted Range: 0.0 <= 
+# Accepted Range: 0.0 <=
 SOCIAL_CHANCE = 0.6
 
 # DISEASE_ENABLED

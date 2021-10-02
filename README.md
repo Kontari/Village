@@ -9,7 +9,7 @@ from the history generation system Dwarf Fortress.
 python3 main.py
 ```
 
-![Demo](village_demo.gif)
+![Demo](img/village_demo.gif)
 
 
 After running press any key to simulate a day. Events will
@@ -26,7 +26,7 @@ actions taken. For example, if disliked a villager might
 opt to attack a rival. Conversely, old friends might be seen
 sharing a drink at the local pub.
 
-![Demo](village_relationships.gif)
+![Demo](img/village_relationships.gif)
 
 
 # Personality Traits
