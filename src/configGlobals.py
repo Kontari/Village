@@ -7,7 +7,7 @@ VERBOSE = True
 # Tier 3 -- Details
 # Tier 4 -- Math details
 # Tier 5 -- Everything
-LOGGING_VERBOSITY = 4
+LOGGING_VERBOSITY = 3
 
 # How many villagers to start with,
 # cannot select less than 8

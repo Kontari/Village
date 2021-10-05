@@ -1,3 +1,4 @@
+import random as r
 
 class Age:
     '''
@@ -8,7 +9,7 @@ class Age:
         self.age = age
         self.age_text = ''
 
-        if bday = '':
+        if bday == '':
             self.bday = r.randint(1, 360)
         else:
             self.bday = bday
@@ -16,10 +17,10 @@ class Age:
 
         self.log = []
 
-    def tick(self):
+    def tick(self) -> None:
         pass
 
-    def reassign_age_text(self):
+    def reassign_age_text(self) -> None:
         if self.age < 4:
             self.age_text = 'Infant'
         elif 4 < self.age < 10:

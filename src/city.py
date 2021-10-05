@@ -21,7 +21,7 @@ class CityManager:
 
         self.log = []
 
-    def tick(self):
+    def tick(self) -> list:
 
         self.population = len(self.pop.people)
 
@@ -33,12 +33,12 @@ class CityManager:
         self.log = []
         return cp_log
 
-    def log_stats(self):
+    def log_stats(self) -> list:
 
         self.log.append([0, 'Pop:{} Wood:{} Stone:{} Food:{}\n'.format(
             self.population, self.wood, self.stone, self.food)])
 
-    def food_eaten(self):
+    def food_eaten(self) -> None:
 
         sum_food = 0
 
@@ -67,7 +67,7 @@ class CityManager:
                 if p.hunger < 11:
                     p.hunger += 1
 
-    def wood_burned(self):
+    def wood_burned(self) -> None:
 
         sum_burned_cook = 5
         sum_burned_warmth = 5

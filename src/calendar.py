@@ -11,10 +11,9 @@ class Calendar:
         self.year = 1
         self.season = 'Spring'
         self.sum_ticks = 0
-
         self.logs = []
 
-    def tick(self):
+    def tick(self) -> list:
 
         self.sum_ticks += 1
         self.increment_date()
@@ -23,7 +22,7 @@ class Calendar:
         self.logs = []
         return cp_logs
 
-    def increment_date(self):
+    def increment_date(self) -> None:
 
         self.day += 1
 
@@ -45,8 +44,7 @@ class Calendar:
                 self.logs.append(
                     [0, 'The year changed to {}'.format(self.year)])
 
-    def set_season(self):
-
+    def set_season(self) -> None:
         if self.month in [12, 1]:
             self.season = 'Winter'
         elif self.month in range(2, 5):
@@ -56,6 +54,5 @@ class Calendar:
         elif self.month in range(9, 11):
             self.season = 'Fall'
 
-    def get_date(self):
-
+    def get_date(self) -> str:
         return '{}/{}/{} {}'.format(self.month, self.day, self.year, self.season)

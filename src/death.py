@@ -1,5 +1,5 @@
 import random as r
-
+import markov
 
 class Death:
 
@@ -7,9 +7,10 @@ class Death:
     Controls chance of death, and death events
     '''
 
-    def __init__(self, pmanager):
+    def __init__(self, pmanager, mark):
 
         self.pop = pmanager
+        self.mark = mark
         self.dead = []
 
         # By chance ways to die
@@ -19,19 +20,14 @@ class Death:
         # Aging related deaths
         self.old_age = ['{} had a heart attack']
 
-        # Work related deaths
-        self.hunter_death = ['{} was lost on a hunt',
-                             '{} was mauled to death by bears']
-        self.farmer_death = ['{} slipped onto a knife']
-        self.woodcutter_death = ['{} was crushed by a tree']
-        self.miner_death = ['{} died in a mine collapse']
+        # TODO: Work related deaths
 
         # Self-inflicted deaths
         self.suicides = ['{} hangs themself', '{} jumps from a tree']
 
         self.log = []
 
-    def tick(self):
+    def tick(self) -> str:
 
         for p in self.pop.people:
             self.tick_death(p)
@@ -40,24 +36,13 @@ class Death:
         self.log = []
         return cp_log
 
-    def tick_death(self, v):
+    def tick_death(self, v) -> None:
         '''
         Check if the villager will die today by aging
         '''
-        '''
-    if 0 < v.age < 4: # Infant
-      if r.randint(0,64605) == 0:
-        self.kill_villager(v)
-        return
-    elif 4 < v.age < 10: # Child
-      if r.randint(0,3041545) == 0: 
-        self.kill_villager(v)
-        return
-    elif 15 < v.age < 24: # Young Adult
-      if r.randint(0,696420) == 0: 
-        self.kill_villager(v)
-        return
-    '''
+
+        # TODO: refactor < 35 random death
+
         if 35 < v.age < 50:  # Adult
             if r.randint(0, 241995) == 0:
                 self.kill_villager(v)
@@ -72,42 +57,32 @@ class Death:
                 return
 
         '''
-    Check if the villager is depressed 
-    '''
+        Check if the villager is depressed 
+        '''
         if v.mood.is_depressed and r.randint(0, 10):
-            self.kill_villager(v, r.choice(self.suicides))
+            #self.kill_villager(v, r.choice(self.suicides))
+            self.kill_villager(v, '{} loses the will to exist -- ' + self.mark.get_death())
             return
 
         '''
-    Check if villager dies on the job
-    '''
+        Check if villager dies on the job
+        '''
 
         '''
-    Check if villager starved
-    '''
+        Check if villager starved
+        '''
         if v.hunger == 0:
             self.kill_villager(v, '{} starved to death.')
             return
 
-    def kill_villager(self, villager, reason=''):
+    def kill_villager(self, villager, reason='') -> None:
         '''
         Time to kick the bucket
-
-        1. Pool all possible deaths into a list
-        2. Select one and log it
-        3. Remove this person from all relationship objects
         '''
         if reason == '':
-            reasons = self.ways_to_die
-            if villager.job == 'Woodcutter':
-                reasons += self.woodcutter_death
-            if villager.job == 'Miner':
-                reasons += self.hunter_death
-            if villager.job == 'Hunter':
-                reasons += self.hunter_death
-            if villager.job == 'Farmer':
-                reasons += self.farmer_death
-            reason = r.choice(reasons)
+            reason = self.mark.get_death()
+        if 'starved' in reason:
+            reason = '{}\'s hunger lead them to ' + self.mark.get_death()
 
         self.log.append([2, '\u001b[31;1m' +
                         reason.format(villager.name) + '\u001b[0m'])

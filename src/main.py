@@ -11,6 +11,11 @@ def main():
     a = input()
     read = ''
     while read != 'q':
+        '''
+        TODO:
+        add options to modify logging verbosity during runtime
+        add pagination when there are 20+ villagers
+        '''
         game.tick_day()
         read = input()
 

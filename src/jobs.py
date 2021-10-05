@@ -28,11 +28,10 @@ class JobManager:
         # Init workers jobs
         self.init_workers()
 
-    def tick(self):
+    def tick(self) -> list:
         self.age_based_jobs()
         self.assign_workers()
         self.tick_jobs()
-
         cp_logs = self.logs
         self.logs = []
         return cp_logs
@@ -40,7 +39,6 @@ class JobManager:
     def age_based_jobs(self):
 
         for p in self.people_manager.people:
-
             if (0 < p.age < 5) and (p.job != 'Infant'):
                 p.job = 'Infant'
                 p.can_work = False
@@ -58,7 +56,7 @@ class JobManager:
         unassigned = []
         for person in self.people_manager.people:
 
-            if (person.job is '') and (person.can_work):
+            if (person.job == '') and (person.can_work):
                 unassigned.append(person)
 
         self.unemployed = unassigned
@@ -264,3 +262,22 @@ class JobManager:
 
             if youngest > 4:
                 n.job = 'Unemployed'
+
+
+class Job:
+
+    def __init__(self, name, mode):
+        '''
+        name: name of the job
+        mode: what kind of job it is
+        '''
+        str: self.name = name
+        str: self.mode = mode
+
+    def tick():
+        pass
+
+
+
+
+
