@@ -52,7 +52,7 @@ def plotInformation(foo):
 
     # The function to be called anytime a slider's value changes
     def update(val):
-        line.set_ydata(f2(t2, beta_slider.val, alpha_slider.val))
+        line.set_ydata(f2(t2, alpha_slider.val, beta_slider.val))
         fig.canvas.draw_idle()
 
     # register the update function with each slider

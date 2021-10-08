@@ -1,2 +1,5 @@
 curses
 figlet
+matplotlib
+scipy
+numpy
