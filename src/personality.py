@@ -5,7 +5,7 @@ class Personality:
 
     '''
     Each villager gets a personality archetype which
-    effects how social, work, and life events effect them. 
+    effects how social, work, and life events effect them.
     '''
 
     def __init__(self, name):
